@@ -24,19 +24,21 @@ def main():
 
     print_header()
     print_menu()
-    option = input("Option: ")
-    while option > 2 and option < 0 :
-        print("Opcion invalida")
-        option = input("Option: ")
+    option = input("$ ")
+    while option != 0:
+        while option > 2 and option < 0 :
+            print("Opcion invalida")
+            option = input("Option: ")
+        
+        cases = {
+            '1': conf,
+            '2': chk_bin
+        }
     
-    cases = {
-        '1': conf,
-        '2': chk_bin #do not use ()
-    }
-    
-    function = cases [str(option)]
-    function()
-    
+        function = cases [str(option)]
+        function()
+        print_menu()
+        option = input("$ ")
         
     
     
