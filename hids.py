@@ -26,7 +26,7 @@ def main():
     print_menu()
     option = input("$ ")
     while option != 0:
-        while option > 2 and option < 0 :
+        while option :
             print("Opcion invalida")
             option = input("Option: ")
         
