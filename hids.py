@@ -2,6 +2,7 @@
 import sys
 import subprocess
 import os
+import instalacion.py
 
 def print_header():
     print("#################### H I D S ####################")
@@ -9,25 +10,28 @@ def print_header():
     
 def print_menu():
     print("Menu")
-    print("1. Verificar archivos binarios del sistema")
+    print("1. Configuracion inicial del sistema")
+    print("2. Verificar archivos binarios del sistema")
     print("0. Salir")
 
 def chk_bin():
-    print ("Checking bin....")
+    print ("Chequeo de archivos binarios del sistema seleccionado")
     
+def conf():
+    os.system("instalacion.py")
 
 def main():
 
     print_header()
     print_menu()
     option = input("Option: ")
-    while option > 1 and option < 0 :
+    while option > 2 and option < 0 :
         print("Opcion invalida")
         option = input("Option: ")
     
     cases = {
-        
-        '1': chk_bin, #do not use ()
+        '1': conf,
+        '2': chk_bin #do not use ()
     }
     
     function = cases [str(option)]
