@@ -2,7 +2,6 @@
 import sys
 import subprocess
 import os
-import instalacion.py
 
 def print_header():
     print("#################### H I D S ####################")
@@ -18,7 +17,8 @@ def chk_bin():
     print ("Chequeo de archivos binarios del sistema seleccionado")
     
 def conf():
-    os.system("instalacion.py")
+    os.system("python instalacion.py")
+
 
 def main():
 
