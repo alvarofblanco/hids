@@ -35,6 +35,33 @@ for i in xrange(4,limit):
 	
 	user = datos[5]
 	script = datos[6]
-	print user
-	print script
-
+	
+	query = "SELECT * FROM cron WHERE name = \'" + script + "\';"
+	print query
+	cursor.execute(query)
+	data = cursor.fetchone()
+	if not data:
+		print "Script sospechoso detectado!"
+		#Alarms
+		date = time.strftime("%c")
+		alarm = '[' + date + '] Alerta! Se encontro el siguiente script en la configuracion de cron: ' + script + '\n'
+		prevention ='[' + date + '] Se ha movido el script a la carpeta /var/log/hids/vault \n'
+		
+		#Mail creation
+		file = open('mail','w')
+		file.write("Este mail usted esta recibiendo por la siguiente advertencia de seguridad: \n" + alarm + "y se han tomado las siguientes medidas: \n" + prevention)	
+		file.close()
+	
+		#Alarma.log file
+		file = open('/var/log/hids/alarmas.log','a')
+		file.write(alarm)
+		file.close()
+		#Prevencion.log file edit
+		file = open('/var/log/hids/prevencion.log','a')
+		file.write(prevention)
+		file.close()
+	
+		#Actually does what it says it has done
+		cmd = "mv " + script + " /var/log/hids/vault"
+		os.system(cmd)
+		#os.system("python mail.py")
