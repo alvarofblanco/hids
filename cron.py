@@ -2,13 +2,13 @@
 
 import time
 import os
-#import MySQLdb as mariadb
+import MySQLdb as mariadb
 import getpass
 import subprocess
 import re
 
 #checks for malicious scripts in the cron folder
-'''
+
 #Database connection
 print 'Ingrese la contrasena de la base de datos'
 pwd = getpass.getpass()
@@ -18,9 +18,9 @@ except mariadb.Error as error:
 	print("ErrorL {}".format(error))
 
 cursor = mariadb_connection.cursor()
-'''
+
 #Executes the cmd
-cmd = "cat /etc/crond"
+cmd = "cat /etc/crontab"
 proc = subprocess.Popen(cmd,shell=True,executable='/bin/bash',stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 out,err = proc.communicate()
 
@@ -29,8 +29,12 @@ ps = out.split('\n')
 limit = len(ps)-1
 
 #Looks through all the process
-for i in range(limit):
+for i in xrange(4,limit):
 	#Parse each line of the output
-	datos = re.compile('\s+').split(ps[i], maxsplit=11)
+	datos = re.compile('\s+').split(ps[i], maxsplit=7)
 	
-	print datos
+	user = datos[5]
+	script = datos[6]
+	print user
+	print script
+
