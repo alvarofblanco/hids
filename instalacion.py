@@ -40,12 +40,15 @@ mariadb_connection.close()
 
 
 #######################CONFIGURACION DE MAIL####################################################
-mail = input ('Ingrese su mail: ')
+mail = raw_input ('Ingrese su mail: ')
 password = getpass.getpass()
+m = hashlib.sha256()
+m.update(password)
+m.digest()
 
-fh = open("/var/mail","w")
-write(password)
-fh.close()
+foo = open("/var/mail/pwd","w")
+foo.write(password)
+foo.close()
 
 
 print("Configuracion finalizada")
