@@ -4,7 +4,7 @@ import os
 import re
 import time
 
-MAX="35.0"
+MAX="075.0"
 proc = subprocess.Popen('ps aux',shell=True,executable='/bin/bash',stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 out,err = proc.communicate()
 ps = out.split('\n')
