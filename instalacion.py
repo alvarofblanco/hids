@@ -7,7 +7,7 @@ print ("Configurando base de datos")
 password = getpass.getpass()
 
 try:
-    mariadb_connection = mariadb.connect("localhost",'root',password)
+    mariadb_connection = mariadb.connect("localhost",'root','ucacytl3d')
 except mariadb.Error as error:
     print("Error: {}".format(error))
     
@@ -37,5 +37,15 @@ cursor.execute("INSERT INTO file_checksum VALUES('resolv', %s)", (checksum,))
 mariadb_connection.commit()
 cursor.close()
 mariadb_connection.close()
+
+
+#######################CONFIGURACION DE MAIL####################################################
+mail = input ('Ingrese su mail: ')
+password = getpass.getpass()
+
+fh = open("/var/mail","w")
+write(password)
+fh.close()
+
 
 print("Configuracion finalizada")
