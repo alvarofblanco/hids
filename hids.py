@@ -32,37 +32,37 @@ def print_menu():
 #Function that calls the chk_bin.py script
 def chk_bin():
     print ("Chequeo de archivos binarios del sistema seleccionado")
-    #os.system("python chk_bin.py")
+    os.system("python chk_bin.py")
 
 #Function that installs and configure the hids      
 def conf():
     print ("Instalacion del HIDS")
-    #os.system("python instalacion.py")
+    os.system("python instalacion.py")
 
 #Function that calls the chk_temp.py script
 def chk_temp():
     print ("Chequeo de la carpeta /temp")
-    #os.system("python chk_temp.py")
+    os.system("python chk_temp.py")
 
 #Function that checks the mail queue
 def chk_mailq():
     print("Chequep de la cola de mail")
-    #os.system("python mail_queue.py")
+    os.system("python mail_queue.py")
     
 #Function that checks if there is a process comsuming too much resources
 def chk_resources():
     print("Chequeo de los procesos del sistema")
-    #os.sytem("python procesos.py")
+    os.sytem("python procesos.py")
 
 #Function that checks if the interfaces are in promis mode
 def chk_promisc():
     print("Verificacion de modo promiscuo")
-    #os.system("python promisc.py")
+    os.system("python promisc.py")
     
 #Function that looks through sniffers in the system
 def chk_sniffers():
     print("Buscando sniffers")
-    #os.system("python sniffers.py")
+    os.system("python sniffers.py")
 
 #Function that sees who is connected to the server
 def chk_who():
@@ -100,8 +100,8 @@ def main():
             chk_bin()
         elif option == 3:
 	        chk_temp()
-	    elif option == 4:
-	        chk_cron()
+	elif option == 4:
+		chk_cron()
 	    elif option == 5:
 	        chk_ddos()
 	    elif option == 6:
