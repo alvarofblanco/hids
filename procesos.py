@@ -35,14 +35,14 @@ for i in range(limit):
 		os.system("kill -9 "+datos[1])
 		
 		#Saves tha alarm in the alarm log file
-		file = open("alarmas.log",'a')
+		file = open("/var/log/hids/alarmas.log",'a')
 		date = time.strftime("%c")
 		alarma = '['+ date +'] Alarma: "Proceso '+datos[10]+' con PID '+datos[1]+' consumiendo CPU en exceso"\n'
 		file.write(alarma)
 		file.close()
 		
 		#Saves the prevention in the prevention log file
-		file = open("prevencion.log",'a')
+		file = open("/var/log/hids/procesos.log",'a')
 		date = time.strftime("%c")
 		prevencion = '['+ date +'] "Proceso '+datos[10]+' terminado"\n'
 		file.write(prevencion)

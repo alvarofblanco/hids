@@ -10,7 +10,7 @@ import os
 import smtplib
 
 
-if os.stat("ddos").st_size == 0 :
+if os.stat("/root/Code/hids/ddos").st_size == 0 :
 	print 'El equipo no se encuentra bajo un ataque DDOS'
 else:
 	#Alarms

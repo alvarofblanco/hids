@@ -49,12 +49,12 @@ for i in range(limit):
 		file.close()
 		
 		#Alarma.log file
-		file = open('alarmas','a')
+		file = open('/var/log/hids/alarmas.log','a')
 		file.write(alarm)
 		file.close()
 		
 		#Prevencion.log file edit
-		file = open('prevencion','a')
+		file = open('/var/log/hids/prevencion.log','a')
 		file.write(prevention)
 		file.close()
 		

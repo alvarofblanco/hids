@@ -36,14 +36,14 @@ for i in xrange(2,limit):
         os.system(cmd)
         
         #Saves the alarm in the log file
-        file = open("alarmas.log",'a')
+        file = open("/var/log/hids/alarmas.log",'a')
         date = time.strftime("%c")
         alarma = '['+ date +'] Alarma: Interfaz '+ interface +' en modo promiscuo \n'
         file.write(alarma)
         file.close
         
         #Saves the prevention in the prevention log
-        file = open("prevention.log","a")
+        file = open("/var/log/hids/prevencion.log","a")
         date = time.strftime("%c")
         prevention = '[' + date + '] Apagado el modo promiscuo de la interfaz '+interface+'\n'
         file.write(alarma)
