@@ -1,1 +1,4 @@
-hola
+Este mail usted esta recibiendo por la siguiente advertencia de seguridad: 
+[Sun Jul  2 22:13:43 2017] Alerta! Se encontro el siguiente script en la configuracion de cron: /usr/script_malo.sh
+y se han tomado las siguientes medidas: 
+[Sun Jul  2 22:13:43 2017] Se ha movido el script a la carpeta /var/log/hids/vault 

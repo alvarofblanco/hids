@@ -64,4 +64,4 @@ for i in xrange(4,limit):
 		#Actually does what it says it has done
 		cmd = "mv " + script + " /var/log/hids/vault"
 		os.system(cmd)
-		#os.system("python mail.py")
+		os.system("python mail.py")
