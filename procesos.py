@@ -15,14 +15,12 @@ for i in range(limit):
 	cpu = datos[2]
 	ram = datos[3]
 	if cpu > MAX:
-		f = open("/var/log/hids/alarmas.log",'a')
+		print "Alarma: Proceso %s consumiendo CPU en exceso" % datos[10]
+		os.system("kill -9 "+datos[1])
+		file = open("/var/log/hids/alarmas.log",'a')
 		date = time.strftime("%c")
-		f.write('['+ date +'] Alarma: Proceso '+proc+' con PID '+pid+' consumiendo RAM en exceso\n')
-		f.close()
-		f = open("/var/log/hids/prevencion.log",'a')
-		f.write('['+ date +'] Proceso '+proc+' terminado por alto consumo de RAM\n')
-		f.close()
-		message = 'Proceso consumiendo RAM en exceso detectado. Por prevencion fue terminado.'
-
-        #os.system("kill -9 "+pid)
-        continue
+		file.write('['+ date +'] Alarma: "Proceso '+datos[10]+' con PID '+datos[1]+' consumiendo CPU en exceso"\n')
+		file.close()
+		file = open("/var/log/hids/prevencion.log",'a')
+		date = time.strftime("%c")
+		file.write('['+ date +'] "Proceso '+datos[10]+' terminado"\n')
