@@ -17,10 +17,16 @@ for i in range(limit):
 	if cpu > MAX:
 		print "Alarma: Proceso %s consumiendo CPU en exceso" % datos[10]
 		os.system("kill -9 "+datos[1])
-		file = open("/var/log/hids/alarmas.log",'aw')
+		file = open("alarmas.log",'aw')
 		date = time.strftime("%c")
-		file.write('['+ date +'] Alarma: "Proceso '+datos[10]+' con PID '+datos[1]+' consumiendo CPU en exceso"\n')
+		alarma = '['+ date +'] Alarma: "Proceso '+datos[10]+' con PID '+datos[1]+' consumiendo CPU en exceso"\n'
+		file.write(alarma)
 		file.close()
-		file = open("/var/log/hids/prevencion.log",'aw')
+		file = open("prevencion.log",'aw')
 		date = time.strftime("%c")
-		file.write('['+ date +'] "Proceso '+datos[10]+' terminado"\n')
+		prevencion = '['+ date +'] "Proceso '+datos[10]+' terminado"\n'
+		file.write(prevencion)
+		file = open("mail","aw")
+		file.write("Este mail usted esta recibiendo por la siguiente advertencia de seguridad: \n" + alarma + "y se han tomado las siguientes medidas: \n")
+		os.system("python mail.py")
+		
