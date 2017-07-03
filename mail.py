@@ -15,7 +15,7 @@ msg['From'] = 'hidsparaguay@gmail.com'
 msg['To'] = 'alvarofblanco@gmail.com'
 s = smtplib.SMTP('smtp.gmail.com:587')
 s.starttls()
-s.login('hidsparaguay@gmail.com','123')
+s.login('hidsparaguay@gmail.com','Tiburoncin123')
 s.sendmail('hidsparaguay@gmail.com','alvarofblanco@gmail.com',msg.as_string() )
 os.system('rm -rf /tmp/mail')
 s.quit()
