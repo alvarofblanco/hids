@@ -1,4 +1,4 @@
 Este mail usted esta recibiendo por la siguiente advertencia de seguridad: 
-[Tue Jul  4 00:59:47 2017] Alarma: "Se ha encontrado un script con nombre hola en la carpeta /tmp"
+[Tue Jul  4 05:19:57 2017] Alerta! Conexion remota desde 192.168.1.104
 y se han tomado las siguientes medidas: 
-[Tue Jul  4 00:59:47 2017] Archivo holaeliminado
+[Tue Jul  4 05:19:57 2017] Se a agregado esa exepcion de la ip 192.168.1.104 en iptables
