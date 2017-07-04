@@ -1,4 +1,5 @@
-Este mail usted esta recibiendo por la siguiente advertencia de seguridad: 
-[Mon Jul  3 20:12:19 2017] Alarma: "Proceso ps con PID 2745 consumiendo CPU en exceso"
-y se han tomado las siguientes medidas: 
-[Mon Jul  3 20:12:19 2017] "Proceso ps terminado"
+Este mail usted esta recibiendo por la siguiente advertencia de seguridad:
+[Mon Jul  3 23:13:14 2017] Alarma! El archivo passwd ha sido modificado
+
+ Y se han tomado las siguentes medidas
+[Mon Jul  3 23:13:14 2017] Aviso mediante mail al administrador
