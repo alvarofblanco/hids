@@ -56,8 +56,9 @@ if response[0] != out[0] :
 	file.close()
 	
 	#sends the mail
-	#os.system("python mail.py")
-	
+	os.system("python mail.py")
+else:
+	print "Archivo passwd sin modificaciones"	
 	
 ###################################################### SHADOW ######################################################
 #Runs a bash command to retrieve the signature of the shadow file
@@ -94,7 +95,9 @@ if response[0] != out[0] :
 	file.close()
 	
 	#sends the mail
-	#os.system("python mail.py")
+	os.system("python mail.py")
+else:
+	print "Archivo shadow sin modificaciones"
 	
 ############################################GROUP################################################################################
 	#Runs a bash command to retrieve the signature of the group file
@@ -131,14 +134,15 @@ if response[0] != out[0] :
 	file.close()
 	
 	#sends the mail
-	#os.system("python mail.py")
-
+	os.system("python mail.py")
+else:
+	print "Archivo group sin modificaciones"
 
 
 	
 ############################################RESOLV################################################################################
 	#Runs a bash command to retrieve the signature of the resolv file
-cmd = "md5sum /etc/resolv | awk '{print $1}'"
+cmd = "md5sum /etc/resolv.conf | awk '{print $1}'"
 process = subprocess.Popen(cmd, shell=True, executable='/bin/bash', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 out,err = process.communicate()
 out = out.split('\n')
@@ -172,4 +176,7 @@ if response[0] != out[0] :
 	
 	#sends the mail
 	#os.system("python mail.py")
+
+else:
+	print "Archivo resolv.conf sin modificaciones"
 
