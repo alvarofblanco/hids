@@ -1,5 +1,4 @@
-Este mail usted esta recibiendo por la siguiente advertencia de seguridad:
-[Tue Jul  4 00:00:20 2017] Alarma! El archivo passwd ha sido modificado
-
- Y se han tomado las siguentes medidas
-[Tue Jul  4 00:00:20 2017] Aviso mediante mail al administrador
+Este mail usted esta recibiendo por la siguiente advertencia de seguridad: 
+[Tue Jul  4 00:59:47 2017] Alarma: "Se ha encontrado un script con nombre hola en la carpeta /tmp"
+y se han tomado las siguientes medidas: 
+[Tue Jul  4 00:59:47 2017] Archivo holaeliminado
