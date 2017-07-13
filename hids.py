@@ -3,21 +3,24 @@ import sys
 import subprocess
 import os
 
+def exit():
+    print("Bye")
 def print_header():
     print("#################### H I D S ####################")
-    print("Elaborado por Alvaro Franco Blanco")
+    print("Developed by Alvaro Franco Blanco")
     
 def print_menu():
     print("Menu")
-    print("1. Configuracion inicial del sistema")
-    print("2. Verificar archivos binarios del sistema")
+    print("1. HIDS Setup")
+    print("2. Check md5sum signature of bin files")
     print("0. Salir")
 
 def chk_bin():
     print ("Chequeo de archivos binarios del sistema seleccionado")
     
 def conf():
-    os.system("python instalacion.py")
+    print("Inital setup")
+    #os.system("python instalacion.py")
 
 
 def main():
@@ -25,18 +28,22 @@ def main():
     print_header()
     print_menu()
     option = input("$ ")
-    cases = {
-        '1': conf,
-        '2': chk_bin
-    }
-
-    function = cases [str(option)]
-    function()
-    print_menu()
-    option = input("$ ")
+   
+    while option != 0:
+        if option==1:
+            conf()
+        elif option == 2:
+            chk_bin()
+        elif option == 0:
+            exit()
+        else:
+            print "Invalid input"
+        
+        print_menu()
+        print "Imprimiendo menu"
+        option = input("$ ")
     
-    
-    
+    print "Bye"
 
 if __name__=="__main__":
 	main()
