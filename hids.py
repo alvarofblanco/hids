@@ -13,6 +13,7 @@ def print_menu():
     print("Menu")
     print("1. HIDS Setup")
     print("2. Check md5sum signature of bin files")
+    print("3. Check the integrity of the /temp folder")
     print("0. Salir")
 
 def chk_bin():
@@ -21,12 +22,12 @@ def chk_bin():
 def conf():
     os.system("python instalacion.py")
 
-def chk_tmp():
+def chk_temp():
     os.system("python chk_temp.py")
 
 
 
-main():
+def main():
 
     print_header()
     print_menu()
