@@ -19,11 +19,14 @@ def chk_bin():
     print ("Chequeo de archivos binarios del sistema seleccionado")
     
 def conf():
-    print("Inital setup")
-    #os.system("python instalacion.py")
+    os.system("python instalacion.py")
+
+def chk_tmp():
+    os.system("python chk_temp.py")
 
 
-def main():
+
+main():
 
     print_header()
     print_menu()
@@ -34,6 +37,8 @@ def main():
             conf()
         elif option == 2:
             chk_bin()
+	elif option == 3:
+	    chk_temp()
         elif option == 0:
             exit()
         else:
