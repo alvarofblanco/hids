@@ -10,6 +10,7 @@ import os
 print ('Ingrese la contrasena de la base de datos')
 pwd = getpass.getpass()
 
+#database connection
 try:	
 	mariadb_connection = mariadb.connect("127.0.0.1", 'root', pwd, 'hids')
 except mariadb.Error as error:
@@ -35,7 +36,7 @@ response = cursor.fetchone()
 
 #checks if the signatures dismatch
 if response[0] != out[0] :
-	#print ("No es igual")
+
 	#Writes the alarm log file
 	date = time.strftime("%c")
 	alarm = '[' + date + '] Alarma! El archivo passwd ha sido modificado\n'
