@@ -7,9 +7,8 @@ import time
 import getpass
 import MySQLdb as mariadb
 
-#Modulo de deteccion de usuarios conectados. Revisa los usuarios conectados por medio
-#De la instruccion who -aH. Si alguno de esos es pts y no esta en la lista de usuarios permitidos, cancela la conexion y agrega una excepcion a la iptables
-
+#Connected users detecction module. Checks the connected users using the who command
+#If any of the connected users is not in the authorize list, cancels the connection and add an ip tables exception
 
 #Database connection
 print 'Ingrese la contrasena de la base de datos'
@@ -20,8 +19,6 @@ except mariadb.Error as error:
 	print("ErrorL {}".format(error))
 
 cursor = mariadb_connection.cursor()
-
-
 
 #Executes who command and parse the output 
 exe = 'who'
@@ -40,19 +37,22 @@ for i in range(len(response)-1):
 	#if the line has 5 arguments (ip included)
 	if len(line) == 5:
 	
+		#saves the ip where the connection comes from
 		ip = line[4].replace('(','')
 		ip = ip.replace(')','')
 		
 		#PRUEBA
 		#ip = '192.168.1.110'
 
+		#looks for the ip in the database
 		query = 'select * from user_ip where ip = \'' + ip + '\''
-		#print query
 		cursor.execute(query)
 		data = cursor.fetchone()
+		
+		#If the ip is not in the database
 		if not data:
 			
-			#Usuario extrano econtrado
+			#intruder!
 			
 		
 			#Alarms
