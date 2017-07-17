@@ -3,14 +3,16 @@
 import time
 import os
 
+#checks for scripts in the /tmp folder
+
+
 listdir = os.listdir('/tmp')
 flag = 0
 
 
-
 for i in listdir:
     path = '/tmp/' + i
-    #print path
+
     if os.path.isfile(path):
         file = open(path,"r")
         line = file.readline()
