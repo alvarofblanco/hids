@@ -3,12 +3,16 @@ import sys
 import subprocess
 import os
 
+#Exit function
 def exit():
     print("Bye")
+
+#Function that prints the header
 def print_header():
     print("#################### H I D S ####################")
     print("Developed by Alvaro Franco Blanco")
     
+#function that prints the menu
 def print_menu():
     print("Menu")
     print("1. HIDS Setup")
@@ -16,17 +20,23 @@ def print_menu():
     print("3. Check the integrity of the /temp folder")
     print("0. Salir")
 
+#Function that calls the chk_bin.py script
 def chk_bin():
     print ("Chequeo de archivos binarios del sistema seleccionado")
-    
+    #os.system("python chk_bin.py")
+
+#Function that installs and configure the hids      
 def conf():
-    os.system("python instalacion.py")
+    print ("Instalacion del HIDS")
+    #os.system("python instalacion.py")
 
+#Function that calls the chk_temp.py script
 def chk_temp():
-    os.system("python chk_temp.py")
+    print ("Chequeo de la carpeta /temp")
+    #os.system("python chk_temp.py")
 
 
-
+#main function
 def main():
 
     print_header()
@@ -49,7 +59,7 @@ def main():
         print "Imprimiendo menu"
         option = input("$ ")
     
-    print "Bye"
+    exit()
 
 if __name__=="__main__":
 	main()
