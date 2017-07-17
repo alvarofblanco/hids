@@ -20,15 +20,19 @@ cursor.execute("USE hids")
 cursor.execute("CREATE TABLE file_checksum(file_name varchar(40), checksum varchar(1024))")
 
 #Extraccion de los checksum de los archivos binarios del sistema
+
 #Checksum de passwd
 checksum = hashlib.md5(open('/etc/passwd', 'rb').read()).hexdigest()
 cursor.execute ("INSERT INTO file_checksum VALUES ('passwd', %s)", (checksum,))
+
 #Checksum de shadow
 checksum = hashlib.md5(open('/etc/shadow', 'rb').read()).hexdigest()
 cursor.execute ("INSERT INTO file_checksum VALUES ('shadow', %s)", (checksum,))
+
 #checksum de group
 checksum = hashlib.md5(open("/etc/group", 'rb').read()).hexdigest()
 cursor.execute("INSERT INTO file_checksum VALUES('group', %s)", (checksum,))
+
 #checksum de resolv.conf
 checksum = hashlib.md5(open("/etc/resolv.conf", 'rb').read()).hexdigest()
 cursor.execute("INSERT INTO file_checksum VALUES('resolv', %s)", (checksum,))
@@ -41,11 +45,15 @@ mariadb_connection.close()
 
 #######################CONFIGURACION DE MAIL####################################################
 mail = raw_input ('Ingrese su mail: ')
+#inserts the pass with 
 password = getpass.getpass()
+
+#encrypts the password
 m = hashlib.sha256()
 m.update(password)
 m.digest()
 
+#Saves the encrypted pass in a file
 foo = open("/var/mail/pwd","w")
 foo.write(password)
 foo.close()
