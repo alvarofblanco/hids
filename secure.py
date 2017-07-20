@@ -59,9 +59,9 @@ for i in range(limit):
 		file.close()
 		
 		#Actually does what it says
-		cmd = "passwd -l "+user[1]
-        #os.system(cmd)
-		#os.system("python mail.py")
+		cmd = "passwd -l "+user
+		os.system(cmd)
+		os.system("python mail.py")
 		
 		count = 0
 		break
