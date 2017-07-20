@@ -1,4 +1,4 @@
 Este mail usted esta recibiendo por la siguiente advertencia de seguridad: 
-[Tue Jul  4 06:49:31 2017] Alerta! Conexion remota desde 192.168.1.104
+[Thu Jul 20 14:47:14 2017] Alarma: "Proceso 0 con PID 1460 consumiendo CPU en exceso"
 y se han tomado las siguientes medidas: 
-[Tue Jul  4 06:49:31 2017] Se a agregado esa exepcion de la ip 192.168.1.104 en iptables
+[Thu Jul 20 14:47:14 2017] Apagadi el modo promiscuo de la interfaz eth0
