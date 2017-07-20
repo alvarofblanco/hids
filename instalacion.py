@@ -3,31 +3,46 @@ import MySQLdb as mariadb
 import getpass
 import hashlib
 import os
+import time
+
+#Saludos
+print("Bienvenido al instalador del HIDS")
+time.sleep(2)
+print("Creando archivos de configuracion...")
+time.sleep(3)
 
 #Create config files
 
+os.system("rm -rf /var/log/hids")
+os.system("rm -rf /etc/hids")
+
 #Create configuration folder
 if not os.path.exists("/etc/hids"):
-    os.makedirs("/var/hids")
+    os.makedirs("/etc/hids")
+os.makedirs("/var/log/hids")
 
 #Crete the log files
 os.system("touch /var/log/hids/alarmas.log")
 os.system("touch /var/log/hids/prevencion.log")
 
 #Crete the sniffers files
-f = open('/etc/hids/sniffers.hids')
-f.write("tshark,john,kismet,tcpdump,dsniff,ettercap,ngrep,topng,snort")
+f = open('/etc/hids/sniffers.hids', 'a')
+f.write("tshark\njohn\nkismet\ntcpdump\ndsniff\nettercap\nngrep\ntopng\nsnort")
 f.close()
 
-#Crete the users files
-f = open('/etc/hids/users.hids')
-nombre = raw_input("Inserte el nombre")
+print("Archivos de configuracion creados")
+time.sleep(2)
+print "Agregar permisos a usuarios que se conectan al equipo. 0 para salir"
 
-while nombre != 0:
-    ip = raw_input("Inserte la direccion IP")
+#Crete the users files
+f = open('/etc/hids/users.hids','a')
+nombre = raw_input("Inserte el nombre: ")
+
+while nombre != '0':
+    ip = raw_input("Inserte la direccion IP: ")
     line = nombre + ',' +ip
     f.write(line)
-    nombre = raw_input("Inserte el nombre")
+    nombre = raw_input("Inserte el nombre: ")
     
 
 
@@ -72,7 +87,7 @@ cursor.execute("INSERT INTO file_checksum VALUES('resolv', %s)", (checksum,))
 cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/users.hids' INTO TABLE user_ip FIELDS TERMINATED BY ','")
 
 #entering the sniffers
-cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/sniffers.hids' INTO TABLE user_ip FIELDS TERMINATED BY ','")
+cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/sniffers.hids' INTO TABLE sniffers FIELDS TERMINATED BY ','")
 
 
 mariadb_connection.commit()
