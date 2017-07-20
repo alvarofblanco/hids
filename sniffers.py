@@ -31,6 +31,7 @@ for i in xrange(2,limit):
 	datos = re.compile('\s+').split(ps[i], maxsplit=10)
 	
 	program = datos[10]
+	pid = datos[1]
 	
 	query = "SELECT * FROM sniffers WHERE name = '" + program+"'"
 	cursor.execute(query)
@@ -38,5 +39,29 @@ for i in xrange(2,limit):
 
 	if data:
 		print "Se encontro un sniffer!"	 
-	
-			
+	    
+	    #Alarms
+		date = time.strftime("%c")
+		alarm = '[' + date + '] Alerta! Se encontro un sniffer: ' + program + '\n'
+		prevention ='[' + date + '] Se ha terminado el proceso '+program+'\n'
+		
+		#Mail creation
+		file = open('mail','w')
+		file.write("Este mail usted esta recibiendo por la siguiente advertencia de seguridad: \n" + alarm + "y se han tomado las siguientes medidas: \n" + prevention)	
+		file.close()
+		
+		#Alarma.log file
+		file = open('/var/log/hids/alarmas.log','a')
+		file.write(alarm)
+		file.close()
+
+		#Prevencion.log file edit
+		file = open('/var/log/hids/prevencion.log','a')
+		file.write(prevention)
+		file.close()
+		
+		#Actually does what it says
+		cmd = "kill -9 "+pid
+		os.system(cmd)
+		os.system("python mail.py")
+		
