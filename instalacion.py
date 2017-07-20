@@ -39,7 +39,7 @@ checksum = hashlib.md5(open("/etc/resolv.conf", 'rb').read()).hexdigest()
 cursor.execute("INSERT INTO file_checksum VALUES('resolv', %s)", (checksum,))
 
 #entering the users
-cursor.execute("LOAD DATA INFILE '/home/ubuntu/workspace/config/users.hids' INTO TABLE user_ip")
+cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/users.hids' INTO TABLE user_ip FIELDS TERMINATED BY ','")
 
 
 mariadb_connection.commit()
