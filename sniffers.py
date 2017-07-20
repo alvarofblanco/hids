@@ -32,11 +32,11 @@ for i in xrange(2,limit):
 	
 	program = datos[10]
 	
-	query = "SELECT * FROM sniffers WHERE name = " + program
+	query = "SELECT * FROM sniffers WHERE name = '" + program+"'"
 	cursor.execute(query)
 	data = cursor.fetchone()
+
+	if data:
+		print "Se encontro un sniffer!"	 
 	
-	print data
-	raw_input("J3")
-	
-	
+			
