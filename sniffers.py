@@ -3,15 +3,21 @@ import subprocess
 import os
 import re
 import time
+import getpass
+import MySQLdb as mariadb
 
-#check if the interface is on promisc mode
+#Database connection
+print 'Ingrese la contrasena de la base de datos'
+pwd = getpass.getpass()
+try:
+	mariadb_connection = mariadb.connect("127.0.0.1", 'root', pwd, 'hids')
+except mariadb.Error as error:
+	print("ErrorL {}".format(error))
+
+cursor = mariadb_connection.cursor()
 
 #Executes the cmd
-
-#set the if in promis mode
-#ip link set eth0 promisc on
-
-cmd = 'netstat -i'
+cmd = 'ps aux'
 proc = subprocess.Popen(cmd,shell=True,executable='/bin/bash',stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 out,err = proc.communicate()
 
@@ -19,39 +25,18 @@ out,err = proc.communicate()
 ps = out.split('\n')
 limit = len(ps)-1
 
+#Looks through all the process
 for i in xrange(2,limit):
-    datos = re.compile('\s+').split(ps[i], maxsplit=11)
-    interface = datos [0]
-    flag = datos[10]
-    
-    if "P" in flag:
-        #Interface is in promisc mode
-        
-        #Alarm
-        print "Alarma: Interfaz %s en modo promiscuo." % interface
-        
-        #Prevention
-        cmd = "ip link set %s promisc off" % interface
-        #print cmd
-        os.system(cmd)
-        
-        #Saves the alarm in the log file
-        file = open("alarmas.log",'a')
-        date = time.strftime("%c")
-        alarma = '['+ date +'] Alarma: Interfaz '+ interface +' en modo promiscuo \n'
-        file.write(alarma)
-        file.close
-        
-        #Saves the prevention in the prevention log
-        file = open("prevention.log","a")
-        date = time.strftime("%c")
-        prevention = '[' + date + '] Apagado el modo promiscuo de la interfaz '+interface+'\n'
-        file.write(alarma)
-        file.close()
-        
-        #Creates the mail to be sended
-        file = open("mail","w")
-        file.write("Este mail usted esta recibiendo por la siguiente advertencia de seguridad: \n" + alarma + "y se han tomado las siguientes medidas: \n" + prevention)
-        file.close()
-        os.system("python mail.py")
-        
+	#Parse each line of the output
+	datos = re.compile('\s+').split(ps[i], maxsplit=10)
+	
+	program = datos[10]
+	
+	query = "SELECT * FROM sniffers WHERE name = " + program
+	cursor.execute(query)
+	data = cursor.fetchone()
+	
+	print data
+	raw_input("J3")
+	
+	
