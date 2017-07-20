@@ -18,6 +18,7 @@ cursor.execute("DROP DATABASE hids")
 cursor.execute("CREATE DATABASE hids")
 cursor.execute("USE hids")
 cursor.execute("CREATE TABLE file_checksum(file_name varchar(40), checksum varchar(1024))")
+cursor.execute("CREATE TABLE user_ip(username varchar(40), ip varchar(15))")
 
 #Extraccion de los checksum de los archivos binarios del sistema
 
@@ -36,6 +37,9 @@ cursor.execute("INSERT INTO file_checksum VALUES('group', %s)", (checksum,))
 #checksum de resolv.conf
 checksum = hashlib.md5(open("/etc/resolv.conf", 'rb').read()).hexdigest()
 cursor.execute("INSERT INTO file_checksum VALUES('resolv', %s)", (checksum,))
+
+#entering the users
+cursor.execute("LOAD DATA INFILE '/home/ubuntu/workspace/config/users.hids' INTO TABLE user_ip")
 
 
 mariadb_connection.commit()
