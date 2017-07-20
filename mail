@@ -1,4 +1,4 @@
 Este mail usted esta recibiendo por la siguiente advertencia de seguridad: 
-[Thu Jul 20 14:47:14 2017] Alarma: "Proceso 0 con PID 1460 consumiendo CPU en exceso"
+[Thu Jul 20 10:52:43 2017] Alarma: Interfaz enp0s3 en modo promiscuo 
 y se han tomado las siguientes medidas: 
-[Thu Jul 20 14:47:14 2017] Apagadi el modo promiscuo de la interfaz eth0
+[Thu Jul 20 10:52:43 2017] Apagado el modo promiscuo de la interfaz enp0s3

@@ -22,7 +22,7 @@ limit = len(ps)-1
 for i in xrange(2,limit):
     datos = re.compile('\s+').split(ps[i], maxsplit=11)
     interface = datos [0]
-    flag = datos[11]
+    flag = datos[10]
     
     if "P" in flag:
         #Interface is in promisc mode
@@ -32,20 +32,20 @@ for i in xrange(2,limit):
         
         #Prevention
         cmd = "ip link set %s promisc off" % interface
-        print cmd
-        #os.system(cmd)
+        #print cmd
+        os.system(cmd)
         
         #Saves the alarm in the log file
         file = open("alarmas.log",'a')
         date = time.strftime("%c")
-        alarma = '['+ date +'] Alarma: "Proceso '+datos[10]+' con PID '+datos[1]+' consumiendo CPU en exceso"\n'
+        alarma = '['+ date +'] Alarma: Interfaz '+ interface +' en modo promiscuo \n'
         file.write(alarma)
         file.close
         
         #Saves the prevention in the prevention log
         file = open("prevention.log","a")
         date = time.strftime("%c")
-        prevention = '[' + date + '] Apagadi el modo promiscuo de la interfaz '+interface+'\n'
+        prevention = '[' + date + '] Apagado el modo promiscuo de la interfaz '+interface+'\n'
         file.write(alarma)
         file.close()
         
@@ -53,5 +53,5 @@ for i in xrange(2,limit):
         file = open("mail","w")
         file.write("Este mail usted esta recibiendo por la siguiente advertencia de seguridad: \n" + alarma + "y se han tomado las siguientes medidas: \n" + prevention)
         file.close()
-        #os.system("python mail.py")
+        os.system("python mail.py")
         
