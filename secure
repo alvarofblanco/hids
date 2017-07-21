@@ -1,12 +1,3 @@
-Jun  2 10:43:45 tera saslauthd[754]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:43:47 tera saslauthd[753]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:43:51 tera saslauthd[751]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:43:59 tera saslauthd[753]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:44:00 tera saslauthd[755]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:44:01 tera saslauthd[751]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:44:03 tera saslauthd[754]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:44:15 tera saslauthd[752]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
-Jun  2 10:44:16 tera saslauthd[755]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
 Jun  2 10:44:20 tera saslauthd[753]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
 Jun  2 10:44:30 tera saslauthd[751]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
 Jun  2 10:44:35 tera saslauthd[754]: pam_unix(smtp:auth): authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=  user=condorito
