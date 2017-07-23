@@ -35,6 +35,30 @@ def chk_temp():
     print ("Chequeo de la carpeta /temp")
     #os.system("python chk_temp.py")
 
+#Function that checks the mail queue
+def chk_mailq():
+    print("Chequep de la cola de mail")
+    #os.system("python mail_queue.py")
+    
+#Function that checks if there is a process comsuming too much resources
+def chk_resources():
+    print("Chequeo de los procesos del sistema")
+    #os.sytem("python procesos.py")
+
+#Function that checks if the interfaces are in promis mode
+def chk_promisc():
+    print("Verificacion de modo promiscuo")
+    #os.system("python promisc.py")
+    
+#Function that looks through sniffers in the system
+def chk_sniffers():
+    print("Buscando sniffers")
+    #os.system("python sniffers.py")
+
+#Function that sees who is connected to the server
+def chk_who():
+    print("Verificacion de usuarios conectados al servidor")
+    os.system("python who.py")
 
 #main function
 def main():
@@ -48,8 +72,8 @@ def main():
             conf()
         elif option == 2:
             chk_bin()
-	elif option == 3:
-	    chk_temp()
+        elif option == 3:
+	        chk_temp()
         elif option == 0:
             exit()
         else:
