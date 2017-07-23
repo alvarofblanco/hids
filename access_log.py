@@ -65,17 +65,12 @@ for i in range(limit):
 		
 		#Actually does what it says
 		cmd = 'iptables -A INPUT -s '+ip+' -j DROP'
-		print cmd
-		raw_input("salir")
 		os.system(cmd)
 		print 'Agregando excepcion a iptables'		
 		os.system('service iptables save')
 		print 'Reiniciando el servicio iptables'
-		
-		
-		#cmd = "passwd -l "+user[1]
-        #os.system(cmd)
-		#os.system("python mail.py")
+		os.system('service iptables restart')
+		os.system('python mail.py')
 		
 		count = 0
 		break
