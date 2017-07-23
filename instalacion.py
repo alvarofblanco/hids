@@ -64,6 +64,7 @@ cursor.execute("USE hids")
 cursor.execute("CREATE TABLE file_checksum(file_name varchar(40), checksum varchar(1024))")
 cursor.execute("CREATE TABLE user_ip(username varchar(40), ip varchar(15))")
 cursor.execute("CREATE TABLE sniffers(name varchar(40))")
+cursor.execute("CREATE TABLE cron(name varchar(40))")
 
 #Extraccion de los checksum de los archivos binarios del sistema
 
