@@ -57,6 +57,7 @@ nombre = raw_input("Inserte el nombre: ")
 
 while nombre != '0':
     f.write(nombre)
+    f.write('\n')
     nombre = raw_input("Inserte el nombre: ")
 
 
