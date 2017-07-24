@@ -99,25 +99,25 @@ def main():
         elif option == 2:
             chk_bin()
         elif option == 3:
-	        chk_temp()
+            chk_temp()
         elif option == 4:
-		    chk_cron()
+            chk_cron()
         elif option == 5:
-	        chk_ddos()
+            chk_ddos()
         elif option == 6:
-	        chk_mailq()
+            chk_mailq()
         elif option == 7:
-	        chk_auth()
+            chk_auth()
         elif option == 8:
-	        chk_process()
+            chk_process()
         elif option == 9:
-	        chk_promisc()
+            chk_promisc()
         elif option == 10:
-	        chk_sniffers()
+            chk_sniffers()
         elif option == 11:
-	        chk_who()
+            chk_who()
         elif option == 12:
-	        chk_access_log()
+            chk_access_log()
         elif option == 0:
             exit()
         else:
