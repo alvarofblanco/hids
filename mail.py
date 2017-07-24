@@ -19,7 +19,7 @@ s = smtplib.SMTP('smtp.gmail.com:587')
 s.starttls()
 
 #Mail and pass of the account
-os.system("gpg -d /var/hids/mail/pass.gpg > .pass")
+os.system("gpg -d /var/log/hids/pass.gpg > .pass")
 f = open(".pass","r")
 pwd = f.readlines()
 print pwd
