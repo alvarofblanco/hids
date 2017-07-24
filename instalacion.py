@@ -20,6 +20,8 @@ os.system("rm -rf /etc/hids")
 if not os.path.exists("/etc/hids"):
     os.makedirs("/etc/hids")
 os.makedirs("/var/log/hids")
+if not os.path.exists("/var/log/hids/vault"):
+    os.makedirs("mkdir /var/log/hids/vault")
 
 #Crete the log files
 os.system("touch /var/log/hids/alarmas.log")
@@ -32,6 +34,8 @@ f.close()
 
 print("Archivos de configuracion creados")
 time.sleep(2)
+
+#Usuarios permitidos
 print "Agregar permisos a usuarios que se conectan al equipo. 0 para salir"
 
 #Crete the users files
@@ -44,14 +48,23 @@ while nombre != '0':
     f.write(line)
     nombre = raw_input("Inserte el nombre: ")
     
+#Scripts que se pueden ejecutar en modo cron
+print "Agregar el path de los scripts que se pueden ejecutar en modo cron. 0 para salir"
 
+#Crete the users files
+f = open('/etc/hids/cron.hids','a')
+nombre = raw_input("Inserte el nombre: ")
+
+while nombre != '0':
+    f.write(nombre)
+    nombre = raw_input("Inserte el nombre: ")
 
 
 print ("Configurando base de datos")
 password = getpass.getpass()
 
 try:
-    mariadb_connection = mariadb.connect("localhost",'root','ucacytl3d')
+    mariadb_connection = mariadb.connect("localhost",'root',password)
 except mariadb.Error as error:
     print("Error: {}".format(error))
     
@@ -90,14 +103,19 @@ cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/users.hids' INTO TABLE user_ip
 #entering the sniffers
 cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/sniffers.hids' INTO TABLE sniffers FIELDS TERMINATED BY ','")
 
+#entering the cron scripts
+cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/cron.hids' INTO TABLE cron")
+
 
 mariadb_connection.commit()
 cursor.close()
 mariadb_connection.close()
-
+#######################CONFIGURACION DE iptables####################################################
+os.system("chmod +x iptables.sh")
+os.system("./iptables.sh")
 
 #######################CONFIGURACION DE MAIL####################################################
-mail = raw_input ('Ingrese su mail: ')
+mail = raw_input ('Ingrese la direccion de correo que enviara las alertas: ')
 #inserts the pass with 
 password = getpass.getpass()
 
