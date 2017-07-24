@@ -19,7 +19,13 @@ s = smtplib.SMTP('smtp.gmail.com:587')
 s.starttls()
 
 #Mail and pass of the account
-s.login('hidsparaguay@gmail.com','Tiburoncin123')
+os.system("gpg -d /var/hids/mail/pass.gpg > .pass")
+f = open(".pass","r")
+pwd = f.readlines()
+print pwd
+os.system("rm -f .pass")
+raw_input("Salir")
+s.login('hidsparaguay@gmail.com',pwd)
 s.sendmail('hidsparaguay@gmail.com','alvarofblanco@gmail.com',msg.as_string() )
 os.system('rm -rf /tmp/mail')
 s.quit()
