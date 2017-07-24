@@ -120,13 +120,13 @@ mail = raw_input ('Ingrese la direccion de correo que enviara las alertas: ')
 password = getpass.getpass()
 
 #Guardar la contrasena en un archivo
-f = open("/var/log/pass","w")
+f = open("/var/log/hids/pass","w")
 f.writelines(password)
 f.close()
 
 #cifrar esa contrasena
-os.system("gpg -c /var/hids/mail/pass")
-os.system("rm -f /var/hids/mail/pass")
+os.system("gpg -c /var/log/hids/pass")
+os.system("rm -f /var/log/hids/pass")
 
 
 print("Configuracion finalizada")
