@@ -104,7 +104,7 @@ cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/users.hids' INTO TABLE user_ip
 cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/sniffers.hids' INTO TABLE sniffers FIELDS TERMINATED BY ','")
 
 #entering the cron scripts
-cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/cron.hids' INTO TABLE cron")
+cursor.execute("LOAD DATA LOCAL INFILE '/etc/hids/cron.hids' INTO TABLE cron FIELDS TERMINATED BY ','")
 
 
 mariadb_connection.commit()
