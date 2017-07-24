@@ -21,7 +21,7 @@ if not os.path.exists("/etc/hids"):
     os.makedirs("/etc/hids")
 os.makedirs("/var/log/hids")
 if not os.path.exists("/var/log/hids/vault"):
-    os.makedirs("mkdir /var/log/hids/vault")
+    os.makedirs("/var/log/hids/vault")
 
 #Crete the log files
 os.system("touch /var/log/hids/alarmas.log")
