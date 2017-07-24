@@ -37,7 +37,7 @@ for i in xrange(4,limit):
 	script = datos[6]
 	
 	query = "SELECT * FROM cron WHERE name = \'" + script + "\';"
-	print query
+	#print query
 	cursor.execute(query)
 	data = cursor.fetchone()
 	if not data:
