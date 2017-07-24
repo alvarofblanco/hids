@@ -52,7 +52,7 @@ def chk_mailq():
 #Function that checks if there is a process comsuming too much resources
 def chk_resources():
     print("Chequeo de los procesos del sistema")
-    os.sytem("python procesos.py")
+    os.system("python procesos.py")
 
 #Function that checks if the interfaces are in promis mode
 def chk_promisc():
@@ -100,23 +100,23 @@ def main():
             chk_bin()
         elif option == 3:
 	        chk_temp()
-	elif option == 4:
-		chk_cron()
-	    elif option == 5:
+        elif option == 4:
+		    chk_cron()
+        elif option == 5:
 	        chk_ddos()
-	    elif option == 6:
+        elif option == 6:
 	        chk_mailq()
-	    elif option == 7:
+        elif option == 7:
 	        chk_auth()
-	    elif option == 8:
+        elif option == 8:
 	        chk_process()
-	    elif option == 9:
+        elif option == 9:
 	        chk_promisc()
-	    elif option == 10:
+        elif option == 10:
 	        chk_sniffers()
-	    elif option == 11:
+        elif option == 11:
 	        chk_who()
-	    elif option == 12:
+        elif option == 12:
 	        chk_access_log()
         elif option == 0:
             exit()
