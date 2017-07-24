@@ -22,8 +22,6 @@ s.starttls()
 os.system("gpg -d /var/log/hids/pass.gpg > .pass")
 f = open(".pass","r")
 pwd = f.readlines()
-pwd = pwd[2:-2]
-print pwd
 os.system("rm -f .pass")
 raw_input("Salir")
 s.login('hidsparaguay@gmail.com',pwd)
