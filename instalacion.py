@@ -120,7 +120,7 @@ mail = raw_input ('Ingrese la direccion de correo que enviara las alertas: ')
 password = getpass.getpass()
 
 #Guardar la contrasena en un archivo
-f = open("/var/hids/mail/pass","w")
+f = open("/var/log/pass","w")
 f.writelines(password)
 f.close()
 
